@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>LAPORAN</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=devices-width, initial-scale=">
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+</head>
+
+<body>
+<nav class="navbar navbar-expand-md navbar-light bg-primary">
+    <a class="navbar-brand text-light" href="#">
+        <img src="dishub.png" width="30" height="30" class="d-inline-block align-top" alt="">
+        Dishub
+    </a>
+    <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#navbarCollapse">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarCollapse">
+        <div class="navbar-nav">
+            <a href="/home" class="nav-item nav-link text-light active">Home</a>
+            <a href="/laporan" class="nav-item nav-link text-light">Laporan</a>
+        </div>
+        <div class="navbar-nav ml-auto">
+            <a href="#" class="nav-item nav-link text-light">{{ username }}</a>
+	    <a href="/logout" class="nav-item nav-link text-light">Log Out</a>
+        </div>
+    </div>
+</nav>
+
+<div class="container-fluid">
+  <div class="row">
+    <div class="col-2 bg-light">
+        <ul class="nav flex-column">
+            <li class="nav-item">
+                <a class="nav-link active" href="#">Tol Gayamsari</a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" href="#">{% for row in hasil %}{{ row[0] }}{% endfor %}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="col-10 bg-dark">
+    <canvas id="myChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+  </div>
+</div>
+
+<div class="card text-center">
+  <div class="card-footer text-muted">
+    2020 - Unisbank
+  </div>
+</div>
+
+<script>
+var ctx = document.getElementById('myChart').getContext('2d');
+var myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+        labels: ['Januari', 'Februari', 'Maret', 'April', 'Mei', 'Juni', 'Juli', 'Agustus','September', 'Oktober', 'November','Desember'],
+        datasets: [{
+            label: 'Kendaraan',
+            data: ["{% for row in myresult1 %}{{ row[0] }}{% endfor %}", "{% for row in myresult2 %}{{ row[0] }}{% endfor %}", "{% for row in myresult3 %}{{ row[0] }}{% endfor %}", "{% for row in myresult4 %}{{ row[0] }}{% endfor %}", "{% for row in myresult5 %}{{ row[0] }}{% endfor %}","{% for row in myresult6 %}{{ row[0] }}{% endfor %}","{% for row in myresult7 %}{{ row[0] }}{% endfor %}","{% for row in myresult8 %}{{ row[0] }}{% endfor %}","{% for row in myresult9 %}{{ row[0] }}{% endfor %}","{% for row in myresult10 %}{{ row[0] }}{% endfor %}","{% for row in myresult11 %}{{ row[0] }}{% endfor %}","{% for row in myresult12 %}{{ row[0] }}{% endfor %}",],
+            backgroundColor: [
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)',
+                'rgba(255, 99, 132, 0.2)',
+                'rgba(54, 162, 235, 0.2)',
+                'rgba(255, 206, 86, 0.2)',
+                'rgba(75, 192, 192, 0.2)',
+                'rgba(153, 102, 255, 0.2)',
+                'rgba(255, 159, 64, 0.2)'
+            ],
+            borderColor: [
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)',
+                'rgba(255, 99, 132, 1)',
+                'rgba(54, 162, 235, 1)',
+                'rgba(255, 206, 86, 1)',
+                'rgba(75, 192, 192, 1)',
+                'rgba(153, 102, 255, 1)',
+                'rgba(255, 159, 64, 1)'
+                
+            ],
+            borderWidth: 1
+        }]
+    },
+    options: {
+        scales: {
+            yAxes: [{
+                ticks: {
+                    beginAtZero: true
+                }
+            }]
+        }
+    }
+});
+</script>
+
+</body>
+</html>
