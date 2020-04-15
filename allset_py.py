@@ -218,9 +218,9 @@ def gen():
     # Input/Output Lines
     # yang itung kendaraan turun (biru)
     line_up = 180
-    up_limit = 100
+    up_limit = 300
     # yang itung kendaraan naik (merah), untuk setting garis
-    line_down = 500
+    line_down = 200
     down_limit = int(3 * (h / 5))
 
     print("Red line y:", str(line_down))
